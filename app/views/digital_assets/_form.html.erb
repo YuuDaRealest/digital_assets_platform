@@ -1,0 +1,42 @@
+<%= form_with(model: digital_asset) do |form| %>
+  <% if digital_asset.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(digital_asset.errors.count, "error") %> prohibited this digital_asset from being saved:</h2>
+
+      <ul>
+        <% digital_asset.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.textarea :description %>
+  </div>
+
+  <div>
+    <%= form.label :file_url, style: "display: block" %>
+    <%= form.text_field :file_url %>
+  </div>
+
+  <div>
+    <%= form.label :price, style: "display: block" %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div>
+    <%= form.label :creator_id, style: "display: block" %>
+    <%= form.text_field :creator_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

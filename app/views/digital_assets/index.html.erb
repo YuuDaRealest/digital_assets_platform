@@ -1,0 +1,51 @@
+<p style="color: green"><%= notice %></p>
+<p style="color: red"><%= alert %></p>
+
+<% content_for :title, "Digital assets" %>
+
+<h1>Digital assets</h1>
+
+<div class="bulk-import-section">
+  <h2>Bulk Import Assets</h2>
+  <%= form_tag bulk_import_digital_assets_path, multipart: true do %>
+    <div class="field">
+      <%= file_field_tag :json_file, accept: 'application/json' %>
+    </div>
+    <div class="actions">
+      <%= submit_tag "Upload JSON", class: "button" %>
+    </div>
+  <% end %>
+</div>
+
+<div id="digital_assets">
+  <table class="assets-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>File URL</th>
+        <th>Price</th>
+        <th>Creator</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @digital_assets.each do |digital_asset| %>
+        <tr>
+          <td><%= digital_asset.title %></td>
+          <td><%= truncate(digital_asset.description, length: 100) %></td>
+          <td><%= link_to "View File", digital_asset.file_url, target: "_blank" %></td>
+          <td><%= number_to_currency(digital_asset.price) %></td>
+          <td><%= digital_asset.creator_id %></td>
+          <td>
+            <%= link_to "Show", digital_asset, class: "action-link" %>
+            <%= link_to "Edit", edit_digital_asset_path(digital_asset), class: "action-link" %>
+            <%= button_to "Delete", digital_asset, method: :delete, class: "delete-button", data: { confirm: "Are you sure?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to "New digital asset", new_digital_asset_path, class: "new-asset-link" %>

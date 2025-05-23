@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @digital_asset %>
+
+<div>
+  <%= link_to "Edit this digital asset", edit_digital_asset_path(@digital_asset) %> |
+  <%= link_to "Back to digital assets", digital_assets_path %>
+
+  <%= button_to "Destroy this digital asset", @digital_asset, method: :delete %>
+</div>

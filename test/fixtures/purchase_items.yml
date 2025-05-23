@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  purchase: one
+  digital_asset: one
+  price_at_purchase: 9.99
+
+two:
+  purchase: two
+  digital_asset: two
+  price_at_purchase: 9.99

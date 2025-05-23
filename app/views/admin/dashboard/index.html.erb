@@ -1,0 +1,32 @@
+<h1>Admin Dashboard</h1>
+
+<div class="stats">
+  <h2>Total Earnings: <%= number_to_currency(@total_earnings) %></h2>
+</div>
+
+<div class="creators-list">
+  <h2>Creators</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @creators.each do |creator| %>
+        <tr>
+          <td><%= creator.id %></td>
+          <td><%= creator.name %></td>
+          <td><%= creator.email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="actions">
+  <%= link_to "View Earnings API", api_admin_earnings_path, class: "button" %>
+  <%= button_to "Logout", admin_logout_path, method: :delete, class: "button" %>
+</div> 
